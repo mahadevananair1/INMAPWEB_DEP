@@ -1,6 +1,6 @@
 import cv2 as cv
 import os
-import cvzone as cvz
+# import cvzone as cvz
 bluemarker = cv.imread(os.path.abspath("inmapapp/static/inmapapp/MarkerBlue.png"),cv.IMREAD_UNCHANGED)
 redmarker = cv.imread(os.path.abspath("inmapapp/static/inmapapp/MarkerRed.png"),cv.IMREAD_UNCHANGED)
 bluemarker = cv.resize(bluemarker, (50, 50), None, 0.3, 0.3)
