@@ -50,34 +50,55 @@
             class="text-grad-sec">map</span></span>
       </div>
     </nav>
-    {%if update%}
-    <div class="img-container" id="img-container">
-      {%if floor1%} 
+    
+    
+      
+      {%if floor1 and not floor2%} 
+      <div class="img-container" id="img-container">
       <div class="img-wrapper" id="overlay1" style="left:0%;">
         
         <div class="img-wrapper-overlay"></div>
         <img src="{%static 'inmapapp/modfloor1.png' %}" class="img-fluid" alt="...">
-        
+        <div class="border border-primary rounded p-2">floor1</div>
 
       </div>
+      </div>
       {%endif%}
-      {%if floor2%}
-      <div id="fgDiv"></div>
-      <div class="img-wrapper" id="overlay2" style="left:-120%;">
+      {%if floor2 and not floor1%}
+      <div class="img-container" id="img-container">
+      <div class="img-wrapper" id="overlay2" >
         
         <div class="img-wrapper-overlay"></div>
 
         <img src="{%static 'inmapapp/modfloor2.png' %}" class="img-fluid" alt="...">
-
+        <div class="border border-primary rounded p-2">floor2</div>
       </div>
       
     </div>
     {%endif%}
     {%if floor1 and floor2%}
+    <div class="img-container" id="img-container">
+    <div class="img-wrapper" id="overlay1" style="left:0%;">
+        
+      <div class="img-wrapper-overlay"></div>
+      <img src="{%static 'inmapapp/modfloor1.png' %}" class="img-fluid" alt="...">
+      <br>
+      <div class="border border-primary rounded p-2">floor1</div>
+
+    </div>
+    <div class="img-wrapper" id="overlay2" style="left:-120%;">
+        
+      <div class="img-wrapper-overlay"></div>
+
+      <img src="{%static 'inmapapp/modfloor2.png' %}" class="img-fluid" alt="...">
+<div class="border border-primary rounded p-2">floor2</div>
+    </div>
+    </div>
     <button class="btn btn-grad ms-auto" onclick="switchFloor()">switch</button>
     {%endif%}
+    
 
-    {%endif%}
+    
     
 
     
