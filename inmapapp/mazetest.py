@@ -1,5 +1,6 @@
 import sys,cv2 as cv
 import time,os
+import cvzone as cvz
 floor1checkpoint = {"kitchen-1st floor":(138, 23), "bedroom1-1st floor":(48, 24), "empty-1st floor":(59, 41), "bath-1st floor":(31, 44), "stairentry-1st floor":(106, 45), "bath2-1st floor":(58, 50), "room-1st floor":(188, 50),"stairexit-1st floor":(106, 53),"familyroom-1st floor":(63, 67), "formaldinnning-1st floor":(100, 68),"office-1st floor":(139, 71), "exit-1st floor":(79, 76)}
 # this is for the second floor
 floor2checkpoint = {"bedroom1-2nd floor":(56,24), "familyroom-2nd floor":(119, 37), "bath-2nd floor":(32, 45), "stairentry-2nd floor":(143, 45), "empty-2nd floor":(73, 51),"stairexit-2nd floor":(142, 51), "bedroom3-2nd floor":(146, 62),"bedroom2-2nd floor":(74, 63),"bathroom-2nd floor":(107, 72)}
@@ -209,11 +210,16 @@ class Maze():
                 
                 # Start
                 elif (i, j) == self.start:
-                    fill = (255, 0, 0)
+                    cv.circle(base_img,(round(j*4.2),round(i*4.7)),1,(0,255,0),20)
+                    cv.putText(base_img, 'You are here!', (round(j*4.2)+5,round(i*4.7)+5), cv.FONT_HERSHEY_SIMPLEX, 0.5, (124, 35, 134), 1, cv.LINE_AA)
+                    continue
 
                 # Goal
                 elif (i, j) == self.goal:
-                    fill = (0, 171, 28)
+                    cv.circle(base_img,(round(j*4.2),round(i*4.7)),1,(243,215,124),20)
+                    cv.putText(base_img, 'Your destination', (round(j*4.2)+5,round(i*4.7)+5), cv.FONT_HERSHEY_SIMPLEX, 0.5, (159, 71, 49), 1, cv.LINE_AA)
+
+                    continue
                 
                 # Solution
                 elif solution is not None and show_solution and (i, j) in solution:
@@ -238,7 +244,11 @@ class Maze():
                 #     fill=fill
                 # )
                 # /home/sooraj/Documents/PROJECTS/INMAPWEBV2.0/inmapproject/inmapapp/templates/inmapapp/index.html
+                
+                
                 cv.circle(base_img,(round(j*4.2),round(i*4.7)),1,fill,5)
+                
+                
         # print(f"for image{self.imagename}")
         print(checkpointlist)
         for checkpoints in checkpointlist:    
